@@ -1,0 +1,107 @@
+*{
+    padding: 0;
+    margin:0;
+    box-sizing: border-box;
+}
+body{
+    background-color: #000000;
+}
+.cards{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px auto;
+    overflow: hidden;
+    background-color: #0e0e0e;
+}
+.cards .listCards{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap:10px;
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+}
+.cards .listCards .container{
+    width:100px;
+    height:200px;
+    /* overflow: hidden; */
+    transition:.5s;
+    cursor: pointer;
+    filter:brightness(0);
+    position:relative;
+    border-radius: 10px;
+}
+.cards .listCards .container:hover{
+    filter:brightness(1);
+    transform: translateZ(200px) scale(1.1);
+    box-shadow: 0 0 35px 1px #000000;
+}
+.cards .listCards .container:hover::after{
+    content: "";
+    width: 15px;
+    height: 15px;
+    background-color: #a3001b;
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    position:absolute;
+    top:-25px;
+    left:45%;
+    z-index:99;
+}
+.cards .listCards .container:hover::before{
+    content: "";
+    width: 15px;
+    height: 15px;
+    background-color: #a3001b;
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    position:absolute;
+    bottom:-25px;
+    left:45%;
+    z-index:99;
+    transform:rotate(180deg);
+}
+.cards .listCards .container:hover + *{
+    filter:brightness(0.6);
+    transform: translateZ(150px) rotateY(40deg);
+}
+.cards .listCards .container:hover + * + *{
+    filter:brightness(0.4);
+    transform: translateZ(70px) rotateY(20deg);
+}
+.cards .listCards .container:hover + * + * + *{
+    filter:brightness(0.2);
+    transform: translateZ(35px) rotateY(10deg);
+}
+
+
+.cards .listCards .container:has( + *:hover ){
+    filter:brightness(0.6);
+    transform: translateZ(150px) rotateY(-40deg);
+}
+.cards .listCards .container:has( + * + *:hover ){
+    filter:brightness(0.4);
+    transform: translateZ(70px) rotateY(-20deg);
+}
+
+
+.cards .listCards .container:has( + * + * + *:hover ){
+    filter:brightness(0.2);
+    transform: translateZ(35px) rotateY(-10deg);
+}
+
+
+
+.cards .listCards .container .imagesCard{
+    width:100%;
+    height:100%;
+    object-fit: cover;
+    border-radius: 10px;
+
+    /* transition: transform 0.3s ease-in-out; */
+}
+/* .cards .listCards .container .imagesCard:hover{
+    transform:scale(1.1, 1.1);
+} */
