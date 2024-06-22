@@ -1,1 +1,1 @@
- 🚀Link[SpiderCard] (https://digoraccoon4279.github.io/SpiderCards/)
+ 🚀Link [SpiderCard](https://digoraccoon4279.github.io/SpiderCards/)
